@@ -1,0 +1,64 @@
+body {
+    background-color: #E5E5E5;
+
+	font-family: 'Righteous', cursive;
+	font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    background-color: #fff;
+
+    height: 80px;
+    width: 100%;
+    padding: 0 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    top: 0px;
+}
+
+.header img{
+    width: 75px;
+}
+
+.posts {
+    background-color: #E5E5E5;
+
+    height: auto;
+    padding-top: 106px;
+}
+
+.header .icon-people {
+    font-size: 42px;
+}
+
+.footer {
+    background-color: #fff;
+
+    height: 80px;
+    width: 100%;
+    padding: 0 18px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    bottom: 0px;
+}
+
+.footer input {
+    background-color: #fff;
+    border: none;
+    
+    height: 70%;
+    width: 80%;
+}
+
+.footer input::placeholder{
+    font-size: 18px;
+    color: #000;
+}
