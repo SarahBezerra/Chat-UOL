@@ -1,4 +1,41 @@
-let posts = []; // array de mensagens
+// LOGIN
+/* */
+function hideLogin(){
+    const login = document.querySelector(".login");
+    login.classList.add("hidden");
+}
+
+function verificationSuccess(resposta){
+    console.log(resposta)
+    hideLogin()
+}
+
+function verificationError(resposta) {
+    //console.log(erro.response.status)
+}
+
+function verifyUser() { // verificar se usuário é válido
+    const nameInput = document.querySelector(".input-name").value;
+
+    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", {name: nameInput})
+    promise.then(verificationSuccess);
+    promise.catch(verificationError);
+}
+
+
+/*
+// CARREGAR MENSAGENS
+const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/messages");
+promise.then(verifyMessage)
+
+function verifyMessage(resposta){
+    console.log(resposta.data)
+}
+
+
+
+
+
 
 
 function sendMessage(){
@@ -10,15 +47,20 @@ function sendMessage(){
         name: "Sarah", // PEGAR DO BANCO DE DADOS
         contents
     }
-    
-    posts.push(message);
 
-    console.log(posts)
+    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", {name: message.name});
+    promise.then(success);
+    promise.catch(fail)
 }
 
+function success(resposta) {
+    console.log("sucesso com o axios");
+}
 
+function fail(resposta){
+    console.log("erro com o axios");
+}
 
-/*
 
 
 */
