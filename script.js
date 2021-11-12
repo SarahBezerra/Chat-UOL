@@ -8,7 +8,7 @@ function hideLogin(){
 
 function verificationSuccess(resposta){
     hideLogin();
-    // add function carregar mensagens
+    loadMessages();
 }
 
 function verificationError(erro) {
@@ -25,14 +25,18 @@ function verifyUser() { // verifica se usuário é válido
 
 
 // CARREGAR MENSAGENS
-const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/messages");
-promise.then(verifyMessage)
+function loadMessages(){
+    const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/messages");
+    promise.then(verifyMessage)
+}
+
 
 function verifyMessage(resposta){
     const server_data = resposta.data;   
-    //console.log(server_data)
+    console.log(server_data)
 
     for(let i=0; i<server_data.length; i++){
+        // mostrando mensagens de texto
         if(server_data[i].type === "message" && server_data[i].to === "Todos"){
             const posts = document.querySelector(".posts");
             posts.innerHTML += `<div class="message">
@@ -41,21 +45,37 @@ function verifyMessage(resposta){
                                     <span class="contents"> ${server_data[i].text} </span> 
                                 </div>`
         }
-        
+        // mostrando mensagens de status
+        if(server_data[i].type === "status"){
+            const posts = document.querySelector(".posts");
+            posts.innerHTML += `<div class="message status">
+                                    <span class="hour">(${server_data[i].time})</span>
+                                    <span class="info"> ${server_data[i].from}</span>
+                                    <span class="contents"> ${server_data[i].text} </span> 
+                                </div>`
+        }
+        // mostrando mensagens privadas
+        if(server_data[i].type === "private_message" && server_data[i].to === userName){
+            const posts = document.querySelector(".posts");
+            posts.innerHTML += `<div class="message private">
+                                    <span class="hour">(${server_data[i].time})</span>
+                                    <span class="info"> ${server_data[i].from} <span class="normal"> reservadamente para </span> ${server_data[i].to}: </span>
+                                    <span class="contents"> ${server_data[i].text} </span>
+                                </div>`
+        }        
     }
-
-    const message_hour = document.querySelector(".message .hour");
-    //message_hour.innerHTML = resposta.data[0].time;
-    //console.log(message_hour)
-
-    const message_info = document.querySelector(".message .info");
-    //console.log(message_info)
-
-    const message_contents = document.querySelector(".message .contents");
-    //console.log(message_contents)
-
 }
 
+
+const message_hour = document.querySelector(".message .hour");
+//message_hour.innerHTML = resposta.data[0].time;
+//console.log(message_hour)
+
+const message_info = document.querySelector(".message .info");
+//console.log(message_info)
+
+const message_contents = document.querySelector(".message .contents");
+//console.log(message_contents)
 
 
 /*
