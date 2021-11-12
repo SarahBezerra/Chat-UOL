@@ -1,12 +1,13 @@
 // LOGIN
+let userName = "";
+
 function hideLogin(){
     const login = document.querySelector(".login");
     login.classList.add("hidden");
 }
 
 function verificationSuccess(resposta){
-    console.log(resposta)
-    hideLogin()
+    hideLogin();
     // add function carregar mensagens
 }
 
@@ -15,11 +16,10 @@ function verificationError(erro) {
 }
 
 function verifyUser() { // verifica se usuário é válido
-    const nameInput = document.querySelector(".input-name").value;
+    userName = document.querySelector(".input-name").value;
 
-    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", {name: nameInput})
-    promise.then(verificationSuccess);
-    promise.catch(verificationError);
+    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", {name: userName})
+    promise.then(verificationSuccess, verificationError); // quando sucesso e quando erro
 }
 
 
@@ -30,7 +30,7 @@ promise.then(verifyMessage)
 
 function verifyMessage(resposta){
     const server_data = resposta.data;   
-    console.log(server_data)
+    //console.log(server_data)
 
     for(let i=0; i<server_data.length; i++){
         if(server_data[i].type === "message" && server_data[i].to === "Todos"){
