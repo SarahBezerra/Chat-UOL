@@ -1,11 +1,11 @@
 body {
     background-color: #E5E5E5;
-
-	font-family: 'Righteous', cursive;
-	font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-.header {
+
+/* BARRA SUPERIOR */
+.top_bar {
     background-color: #fff;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 
@@ -21,23 +21,32 @@ body {
     top: 0px;
 }
 
-.header img{
+.top_bar img{
     width: 75px;
 }
 
-.header .icon-people {
+.top_bar .icon-people {
     font-size: 42px;
 }
 
+
+/* MENSAGENS */
 .posts {
     background-color: #E5E5E5;
 
     height: auto;
     padding-top: 106px;
+    padding-bottom: 80px;
 }
 
 .message {
-    padding: 0 9px;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+
+    padding: 14px 9px;
+    margin-bottom: 4px;
     width: 100%;
     height: auto;
 }
@@ -50,11 +59,23 @@ body {
     background-color: #FFDEDE;
 }
 
-.bold {
-    font-style: bold;
+.message .hour {
+    color: #AAAAAA;
+    margin-right: 3px;
 }
 
-.footer {
+.message .info {
+    font-weight: 700;
+    margin-right: 2px;
+}
+
+.message .info .normal {
+    font-weight: 400;
+}
+
+
+/* BARRA INFERIOR */
+.bottom_bar {
     background-color: #fff;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 
@@ -70,7 +91,7 @@ body {
     bottom: 0px;
 }
 
-.footer input {
+.bottom_bar input {
     background-color: #fff;
     border: none;
     
@@ -78,17 +99,17 @@ body {
     width: 80%;
 }
 
-.footer input {
+.bottom_bar input {
     font-size: 18px;
 }
 
-.footer input::placeholder{
+.bottom_bar input::placeholder{
     font-size: 18px;
     font-style: italic;
     color: #000;
 }
 
-.footer .send-message {
+.bottom_bar .send-message {
     font-size: 30px;
 }
 

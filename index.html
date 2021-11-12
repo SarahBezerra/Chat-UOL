@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,900;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,30 +17,24 @@
 <body>
 
     <!--TELA INICIAL-->
-    <div class="login"> <!-- depois tirar esse hidden -->
+    <div class="login hidden"> <!-- depois tirar esse hidden -->
         <img class="logo-login" src="multimidia/logo.jpg" alt="logo-uol">
         <input type="text" class="input-name" placeholder="Digite seu nome">
         <button onclick="verifyUser()" >Entrar</button>
     </div>
     <!--FIM TELA INICIAL-->
     
-    <header class="header">
+    <div class="top_bar">
         <img src="multimidia/logo.jpg" alt="logo-uol">
         <ion-icon class="icon-people" name="people"></ion-icon>
-    </header>
+    </div>
 
-    <main class="posts">
-        <div class="message hidden">
-            <div class="hour"></div>
-            <div class="info"></div>
-            <div class="contents"></div>
-        </div>
-    </main>
+    <main class="posts"></main>
 
-    <footer class="footer">
+    <div class="bottom_bar">
         <input class="input" type="text" placeholder="Escreva aqui...">
         <ion-icon class="send-message" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
-    </footer>
+    </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
