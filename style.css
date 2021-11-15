@@ -37,6 +37,8 @@ body {
     height: auto;
     padding-top: 106px;
     padding-bottom: 80px;
+
+    overflow-y: scroll;
 }
 
 .message {
@@ -168,6 +170,11 @@ body {
     
     width: 109px;
     height: 54px;
+}
+
+.login .alert {
+    height: 25px;
+    color: rgb(253, 123, 123);
 }
 
 
