@@ -13,7 +13,8 @@ function success(resposta){
     
     (document.querySelector(".login")).classList.add("hidden");
 
-    loadMessages();
+    Messages();
+    // gerar mensagem de entrou na sala
 }
 
 function fail(erro){
@@ -31,8 +32,56 @@ function verifyUser(){
 // <- END LOGIN
 
 
-function loadMessages(){
+function Messages(){
+    const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
+    promise.then(loadMessages);
+    promise.catch(erro => console.log(erro.response.status));
 
+}
+
+let cont = 0;
+
+function loadMessages(resposta){
+    const posts = document.querySelector(".posts");
+    let message = "";
+
+    let messages = resposta.data;
+    console.log(messages)
+
+    for(let i=0; i<messages.length; i++){
+
+        if(messages[i].type === "status"){
+            message =   `<div class="message status">
+                        <span class="hour">${messages[i].time}</span>
+                        <span class="info">${messages[i].from}</span>
+                        <span class="text">${messages[i].text}</span>
+                        </div>`
+        }
+        else if(messages[i].type === "message"){
+            message =   `<div class="message">
+                        <span class="hour">${messages[i].time}</span>
+                        <span class="info">${messages[i].from} para ${messages[i].to}:</span>
+                        <span class="text">${messages[i].text}</span>
+                        </div>`
+        }
+        else if(messages[i].type === "private_message" && messages[i].to === username){
+            message =   `<div class="message private">
+                        <span class="hour">${messages[i].time}</span>
+                        <span class="info">${messages[i].from} reservadamente para ${messages[i].to}:</span>
+                        <span class="text">${messages[i].text}</span>
+                        </div>`
+        }
+
+        posts.innerHTML += message
+    }
+
+    (document.querySelector(".message:last-child")).scrollIntoView();
+
+    // Atualizar mensagens a cada 3 segundos
+    if(cont === 0){
+        setInterval(Messages, 3000);
+        cont = 1;
+    }
 }
 
 
