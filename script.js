@@ -14,7 +14,6 @@ function success(resposta){
     (document.querySelector(".login")).classList.add("hidden");
 
     Messages();
-    // gerar mensagem de entrou na sala
 }
 
 function fail(erro){
@@ -31,7 +30,7 @@ function verifyUser(){
 }
 // <- END LOGIN
 
-
+// START MESSAGES ->
 function Messages(){
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
     promise.then(loadMessages);
@@ -60,14 +59,14 @@ function loadMessages(resposta){
         else if(messages[i].type === "message"){
             message =   `<div class="message">
                         <span class="hour">${messages[i].time}</span>
-                        <span class="info">${messages[i].from} para ${messages[i].to}:</span>
+                        <span class="info">${messages[i].from} <span class="normal">para</span> ${messages[i].to}:</span>
                         <span class="text">${messages[i].text}</span>
                         </div>`
         }
         else if(messages[i].type === "private_message" && messages[i].to === username){
             message =   `<div class="message private">
                         <span class="hour">${messages[i].time}</span>
-                        <span class="info">${messages[i].from} reservadamente para ${messages[i].to}:</span>
+                        <span class="info">${messages[i].from} <span class="normal">reservadamente para</span> ${messages[i].to}:</span>
                         <span class="text">${messages[i].text}</span>
                         </div>`
         }
@@ -83,6 +82,24 @@ function loadMessages(resposta){
         cont = 1;
     }
 }
+// END MESSAGES <-
+
+function sendMessage(){
+    const written_message = document.querySelector(".bottom_bar .input").value;
+    console.log(written_message);
+
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", {  from: username,
+                                                                                        to: "Todos",
+                                                                                        text: written_message,
+                                                                                        type: "message"});
+
+    // caso sucesso: recarrega mensagens                                                                                        
+    promise.then(loadMessages);
+
+    // caso erro: recarrega a pagina, indo para a tela de login
+    promise.catch(erro => {console.log(erro.response.status); window.location.reload(true)});
+}
+
 
 
 
