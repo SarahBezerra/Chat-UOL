@@ -17,7 +17,7 @@
 <body>
 
     <!--TELA INICIAL-->
-    <div class="login"> <!-- depois tirar esse hidden -->
+    <div class="login">
         <img class="logo-login" src="multimidia/logo.jpg" alt="logo-uol">
         <div class="alert"></div>
         <input type="text" class="input-name" placeholder="Digite seu nome">
@@ -30,11 +30,17 @@
         <ion-icon class="icon-people" name="people"></ion-icon>
     </div>
 
-    <main class="posts"></main>
+    <main class="posts">
+        <div class="message">
+            <span class="hour">dsds</span>
+            <span class="info">dsdsad</span>
+            <span class="text">sadasd</span>
+        </div>
+    </main>
 
     <div class="bottom_bar">
         <input class="input" type="text" placeholder="Escreva aqui...">
-        <ion-icon class="send-message" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+        <div><ion-icon class="send-message" name="paper-plane-outline" onclick="sendMessage()"></ion-icon></div>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>

@@ -1,3 +1,78 @@
+let username = "";
+let message_alert = document.querySelector(".login .alert");
+
+// START LOGIN ->
+function keepLogin(){
+    axios.post("https://mock-api.driven.com.br/api/v4/uol/status", {name: username});
+}
+
+function success(resposta){
+    console.log(resposta.status);
+    message_alert.innerHTML = "";
+    setInterval(keepLogin, 5000);
+    
+    (document.querySelector(".login")).classList.add("hidden");
+
+    loadMessages();
+}
+
+function fail(erro){
+    console.log(erro.response.status)
+    message_alert.innerHTML = "Nome em uso, digite outro nome...";
+}
+
+function verifyUser(){
+    username = document.querySelector(".input-name").value;
+
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", {name: username});
+    promise.then(success);
+    promise.catch(fail);
+}
+// <- END LOGIN
+
+
+function loadMessages(){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // LOGIN
 let userName = "";
 
@@ -132,6 +207,5 @@ function fail(resposta){
     console.log("erro ao enviar");
 }
 
-/*
 
 */

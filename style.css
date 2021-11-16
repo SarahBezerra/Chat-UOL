@@ -101,16 +101,14 @@ body {
     
     height: 70%;
     width: 80%;
-}
 
-.bottom_bar input {
     font-size: 18px;
 }
 
 .bottom_bar input::placeholder{
     font-size: 18px;
     font-style: italic;
-    color: #000;
+    color: rgb(68, 68, 68);
 }
 
 .bottom_bar .send-message {
@@ -176,7 +174,6 @@ body {
     height: 25px;
     color: rgb(253, 123, 123);
 }
-
 
 .hidden {
     display: none;
